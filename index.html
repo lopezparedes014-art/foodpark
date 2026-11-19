@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Hayes Food Park - Menú Digital</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; background-color: #0B0D0C; color: #F3F4F6; }
+        .emerald-glow { box-shadow: 0 0 25px rgba(16, 185, 129, 0.15); }
+    </style>
+</head>
+<body class="bg-[#0B0D0C] text-gray-100 min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-black">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-[#0B0D0C]/95 backdrop-blur-md border-b border-emerald-900/40">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-extrabold text-xl shadow-lg">
+                    🍔
+                </div>
+                <div>
+                    <h1 class="text-2xl font-black tracking-wider text-white flex items-center gap-2">
+                        VILLA HAYES <span class="text-emerald-400">FOOD PARK</span>
+                    </h1>
+                    <p class="text-xs text-emerald-400/80 font-medium tracking-wide">¡Sabor que te hace volver!</p>
+                </div>
+            </div>
+
+            <div class="w-full md:w-80 relative">
+                <input type="text" id="searchInput" placeholder="Buscar plato, pizza, trago, cerveza..." oninput="filterMenu()"
+                    class="w-full bg-[#141816] text-sm text-gray-200 placeholder-gray-500 px-4 py-2.5 rounded-xl border border-emerald-900/60 focus:outline-none focus:border-emerald-500 transition-all shadow-inner">
+                <span class="absolute right-3 top-3 text-emerald-500/60 text-sm">🔍</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- MENU LIST -->
+        <div id="menu-container" class="lg:col-span-2 space-y-12">
+            
+            <!-- 1. LOMITO ÁRABE -->
+            <div class="menu-section bg-[#141816]/60 border border-emerald-900/40 rounded-2xl p-6 shadow-xl">
+                <div class="mb-6 pb-3 border-b border-emerald-900/40">
+                    <h2 class="text-xl font-bold text-white tracking-wide flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Lomito Árabe</h2>
+                    <p class="text-xs text-gray-400 mt-1">Preparados al momento con nuestra salsa de ajo especial</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Lomito Árabe de Pollo</h4><p class="text-xs text-gray-400 mt-1">Repollo, tomate, queso, pollo, salsa de ajo.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">26.000 GS.</span><button onclick="addToCart('Lomito Árabe de Pollo', 26000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Lomito Árabe Mixto</h4><p class="text-xs text-gray-400 mt-1">Repollo, tomate, queso, carne, pollo, salsa de ajo.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">30.000 GS.</span><button onclick="addToCart('Lomito Árabe Mixto', 30000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Lomito Árabe Carne</h4><p class="text-xs text-gray-400 mt-1">Repollo, tomate, queso, carne, salsa de ajo.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">32.000 GS.</span><button onclick="addToCart('Lomito Árabe Carne', 32000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Lomito Árabe Especial</h4><p class="text-xs text-gray-400 mt-1">Carne, pollo, huevo, panceta, repollo, tomate, salsa de ajo.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">35.000 GS.</span><button onclick="addToCart('Lomito Árabe Especial', 35000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. SÁNDWICH DE LOMITO -->
+            <div class="menu-section bg-[#141816]/60 border border-emerald-900/40 rounded-2xl p-6 shadow-xl">
+                <div class="mb-6 pb-3 border-b border-emerald-900/40">
+                    <h2 class="text-xl font-bold text-white tracking-wide flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Sándwich de Lomito</h2>
+                    <p class="text-xs text-gray-400 mt-1">Pan casero y abundante relleno</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Lomito Tradicional</h4><p class="text-xs text-gray-400 mt-1">Pan, carne, lechuga, tomate, jamón, queso, huevo.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">25.000 GS.</span><button onclick="addToCart('Lomito Tradicional', 25000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Lomito Especial</h4><p class="text-xs text-gray-400 mt-1">Pan, carne, panceta, cebolla caramelizada, cheddar, huevo.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">30.000 GS.</span><button onclick="addToCart('Lomito Especial', 30000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Sándwich de Lomito Tradicional de Pollo</h4><p class="text-xs text-gray-400 mt-1">Pan, tomate, lechuga, pollo, jamón, queso, huevo.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">25.000 GS.</span><button onclick="addToCart('Sándwich de Lomito Tradicional de Pollo', 25000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. HAMBURGUESAS -->
+            <div class="menu-section bg-[#141816]/60 border border-emerald-900/40 rounded-2xl p-6 shadow-xl">
+                <div class="mb-6 pb-3 border-b border-emerald-900/40">
+                    <h2 class="text-xl font-bold text-white tracking-wide flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Hamburguesas</h2>
+                    <p class="text-xs text-gray-400 mt-1">El combo incluye papas fritas</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Clásica</h4><p class="text-xs text-gray-400 mt-1">Pan, carne, lechuga, tomate, jamón, queso.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex flex-col gap-1 text-xs">
+                            <button onclick="addToCart('Hamburguesa Clásica (Sin Combo)', 16000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 px-2 py-1.5 rounded-lg border border-emerald-900/50 flex justify-between cursor-pointer"><span>Sin Combo:</span> <strong class="text-emerald-400">16.000 GS.</strong></button>
+                            <button onclick="addToCart('Hamburguesa Clásica (Con Combo)', 22000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 px-2 py-1.5 rounded-lg border border-emerald-900/50 flex justify-between cursor-pointer"><span>Con Combo:</span> <strong class="text-emerald-400">22.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Especial</h4><p class="text-xs text-gray-400 mt-1">Pan, carne, lechuga, tomate, jamón y queso, cheddar, cebolla, panceta, huevo.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex flex-col gap-1 text-xs">
+                            <button onclick="addToCart('Hamburguesa Especial (Sin Combo)', 24000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 px-2 py-1.5 rounded-lg border border-emerald-900/50 flex justify-between cursor-pointer"><span>Sin Combo:</span> <strong class="text-emerald-400">24.000 GS.</strong></button>
+                            <button onclick="addToCart('Hamburguesa Especial (Con Combo)', 30000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 px-2 py-1.5 rounded-lg border border-emerald-900/50 flex justify-between cursor-pointer"><span>Con Combo:</span> <strong class="text-emerald-400">30.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Especial Doble Carne</h4><p class="text-xs text-gray-400 mt-1">Pan, doble carne, lechuga, tomate, jamón y queso, cheddar, cebolla, panceta, huevo.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex flex-col gap-1 text-xs">
+                            <button onclick="addToCart('Hamburguesa Doble Carne (Sin Combo)', 28000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 px-2 py-1.5 rounded-lg border border-emerald-900/50 flex justify-between cursor-pointer"><span>Sin Combo:</span> <strong class="text-emerald-400">28.000 GS.</strong></button>
+                            <button onclick="addToCart('Hamburguesa Doble Carne (Con Combo)', 35000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 px-2 py-1.5 rounded-lg border border-emerald-900/50 flex justify-between cursor-pointer"><span>Con Combo:</span> <strong class="text-emerald-400">35.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Especial Triple Carne</h4><p class="text-xs text-gray-400 mt-1">Pan, triple carne, lechuga, tomate, jamón y queso, cheddar, cebolla, panceta, huevo.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex flex-col gap-1 text-xs">
+                            <button onclick="addToCart('Hamburguesa Triple Carne (Sin Combo)', 35000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 px-2 py-1.5 rounded-lg border border-emerald-900/50 flex justify-between cursor-pointer"><span>Sin Combo:</span> <strong class="text-emerald-400">35.000 GS.</strong></button>
+                            <button onclick="addToCart('Hamburguesa Triple Carne (Con Combo)', 42000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 px-2 py-1.5 rounded-lg border border-emerald-900/50 flex justify-between cursor-pointer"><span>Con Combo:</span> <strong class="text-emerald-400">42.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Kids</h4><p class="text-xs text-gray-400 mt-1">Pan, carne, queso.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex flex-col gap-1 text-xs">
+                            <button onclick="addToCart('Hamburguesa Kids (Sin Combo)', 14000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 px-2 py-1.5 rounded-lg border border-emerald-900/50 flex justify-between cursor-pointer"><span>Sin Combo:</span> <strong class="text-emerald-400">14.000 GS.</strong></button>
+                            <button onclick="addToCart('Hamburguesa Kids (Con Combo)', 20000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 px-2 py-1.5 rounded-lg border border-emerald-900/50 flex justify-between cursor-pointer"><span>Con Combo:</span> <strong class="text-emerald-400">20.000 GS.</strong></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. CHIVITO Y LOMIPIZZA -->
+            <div class="menu-section bg-[#141816]/60 border border-emerald-900/40 rounded-2xl p-6 shadow-xl">
+                <div class="mb-6 pb-3 border-b border-emerald-900/40">
+                    <h2 class="text-xl font-bold text-white tracking-wide flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Chivito & Lomipizza</h2>
+                    <p class="text-xs text-gray-400 mt-1">Especialidades de la casa</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Chivito Tradicional</h4><p class="text-xs text-gray-400 mt-1">Pan, carne, lechuga, tomate, jamón, queso, huevo.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">50.000 GS.</span><button onclick="addToCart('Chivito Tradicional', 50000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Chivito de la Casa</h4><p class="text-xs text-gray-400 mt-1">Pan, carne, jamón, queso, huevo, panceta, cebolla, lechuga, tomate, cheddar.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">70.000 GS.</span><button onclick="addToCart('Chivito de la Casa', 70000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Lomipizza (4 Porciones)</h4><p class="text-xs text-gray-400 mt-1">Lechuga, tomate, lomito, huevo, jamón, queso, topping, salsa de tomate, orégano, queso muzzarella y aceituna.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">80.000 GS.</span><button onclick="addToCart('Lomipizza (4 Porciones)', 80000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Lomipizza (8 Porciones)</h4><p class="text-xs text-gray-400 mt-1">Lechuga, tomate, lomito, huevo, jamón, queso, topping, salsa de tomate, orégano, queso muzzarella y aceituna.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">120.000 GS.</span><button onclick="addToCart('Lomipizza (8 Porciones)', 120000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. PIZZAS TRADICIONALES -->
+            <div class="menu-section bg-[#141816]/60 border border-emerald-900/40 rounded-2xl p-6 shadow-xl">
+                <div class="mb-6 pb-3 border-b border-emerald-900/40">
+                    <h2 class="text-xl font-bold text-white tracking-wide flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Pizzas</h2>
+                    <p class="text-xs text-gray-400 mt-1">Elige tamaño (8 o 12 porciones) y borde tradicional o relleno</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
+                        <h4 class="font-bold text-gray-100 text-sm">Muzzarella</h4><p class="text-xs text-gray-400 mt-1">Queso muzzarella, orégano, aceituna, salsa de tomate.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 pt-3 border-t border-emerald-900/20 text-xs">
+                            <button onclick="addToCart('Pizza Muzzarella (8 P. Sin Borde)', 45000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">45.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Muzzarella (8 P. Con Borde)', 55000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">55.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Muzzarella (12 P. Sin Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Muzzarella (12 P. Con Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
+                        <h4 class="font-bold text-gray-100 text-sm">Pepperoni</h4><p class="text-xs text-gray-400 mt-1">Queso muzzarella, pepperoni, orégano, aceituna, salsa de tomate.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 pt-3 border-t border-emerald-900/20 text-xs">
+                            <button onclick="addToCart('Pizza Pepperoni (8 P. Sin Borde)', 55000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">55.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Pepperoni (8 P. Con Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Pepperoni (12 P. Sin Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Pepperoni (12 P. Con Borde)', 85000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">85.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
+                        <h4 class="font-bold text-gray-100 text-sm">Choclo</h4><p class="text-xs text-gray-400 mt-1">Queso muzzarella, choclo, orégano, aceituna, salsa de tomate.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 pt-3 border-t border-emerald-900/20 text-xs">
+                            <button onclick="addToCart('Pizza Choclo (8 P. Sin Borde)', 50000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">50.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Choclo (8 P. Con Borde)', 60000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">60.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Choclo (12 P. Sin Borde)', 70000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">70.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Choclo (12 P. Con Borde)', 80000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">80.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
+                        <h4 class="font-bold text-gray-100 text-sm">Mexicana</h4><p class="text-xs text-gray-400 mt-1">Muzzarella, tomate fresco, panceta, morrón, ají picante, pimiento negro, ajo, orégano, aceituna, salsa de tomate.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 pt-3 border-t border-emerald-900/20 text-xs">
+                            <button onclick="addToCart('Pizza Mexicana (8 P. Sin Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Mexicana (8 P. Con Borde)', 70000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">70.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Mexicana (12 P. Sin Borde)', 80000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">80.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Mexicana (12 P. Con Borde)', 90000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">90.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
+                        <h4 class="font-bold text-gray-100 text-sm">Jamón y Queso</h4><p class="text-xs text-gray-400 mt-1">Queso muzzarella, jamón, orégano, aceituna, salsa de tomate.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 pt-3 border-t border-emerald-900/20 text-xs">
+                            <button onclick="addToCart('Pizza Jamón y Queso (8 P. Sin Borde)', 50000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">50.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Jamón y Queso (8 P. Con Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Jamón y Queso (12 P. Sin Borde)', 70000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">70.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Jamón y Queso (12 P. Con Borde)', 80000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">80.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
+                        <h4 class="font-bold text-gray-100 text-sm">Catupollo</h4><p class="text-xs text-gray-400 mt-1">Queso muzzarella, pollo desmenuzado, catupiry, orégano, aceituna, salsa de tomate.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 pt-3 border-t border-emerald-900/20 text-xs">
+                            <button onclick="addToCart('Pizza Catupollo (8 P. Sin Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Catupollo (8 P. Con Borde)', 70000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">70.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Catupollo (12 P. Sin Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Catupollo (12 P. Con Borde)', 85000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">85.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
+                        <h4 class="font-bold text-gray-100 text-sm">Napolitana</h4><p class="text-xs text-gray-400 mt-1">Queso muzzarella, tomate cherry, hoja de albahaca, orégano, aceituna, salsa de tomate.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 pt-3 border-t border-emerald-900/20 text-xs">
+                            <button onclick="addToCart('Pizza Napolitana (8 P. Sin Borde)', 55000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">55.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Napolitana (8 P. Con Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Napolitana (12 P. Sin Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Napolitana (12 P. Con Borde)', 85000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">85.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
+                        <h4 class="font-bold text-gray-100 text-sm">Catupiri</h4><p class="text-xs text-gray-400 mt-1">Queso muzzarella, catupiri, orégano, aceituna, salsa de tomate.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 pt-3 border-t border-emerald-900/20 text-xs">
+                            <button onclick="addToCart('Pizza Catupiri (8 P. Sin Borde)', 60000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">60.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Catupiri (8 P. Con Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Catupiri (12 P. Sin Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Catupiri (12 P. Con Borde)', 85000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">85.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
+                        <h4 class="font-bold text-gray-100 text-sm">Panceta y Cheddar</h4><p class="text-xs text-gray-400 mt-1">Queso muzzarella, cheddar, orégano, aceituna, salsa de tomate.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 pt-3 border-t border-emerald-900/20 text-xs">
+                            <button onclick="addToCart('Pizza Panceta y Cheddar (8 P. Sin Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Panceta y Cheddar (8 P. Con Borde)', 70000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">70.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Panceta y Cheddar (12 P. Sin Borde)', 80000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">80.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Panceta y Cheddar (12 P. Con Borde)', 90000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">90.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
+                        <h4 class="font-bold text-gray-100 text-sm">Palmitos</h4><p class="text-xs text-gray-400 mt-1">Salsa de tomate, muzzarella, palmitos, aceitunas negras, verdeo.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 pt-3 border-t border-emerald-900/20 text-xs">
+                            <button onclick="addToCart('Pizza Palmitos (8 P. Sin Borde)', 60000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">60.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Palmitos (8 P. Con Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Palmitos (12 P. Sin Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Palmitos (12 P. Con Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
+                        <h4 class="font-bold text-gray-100 text-sm">Katucarne</h4><p class="text-xs text-gray-400 mt-1">Salsa de tomate, muzzarella, carne sazonada, catupiry y verdeo.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 pt-3 border-t border-emerald-900/20 text-xs">
+                            <button onclick="addToCart('Pizza Katucarne (8 P. Sin Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Katucarne (8 P. Con Borde)', 70000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">70.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Katucarne (12 P. Sin Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Katucarne (12 P. Con Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
+                        <h4 class="font-bold text-gray-100 text-sm">Carnívora</h4><p class="text-xs text-gray-400 mt-1">Salsa de tomate, muzzarella, carne, panceta, raddnante y cebolla caramelizada.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 pt-3 border-t border-emerald-900/20 text-xs">
+                            <button onclick="addToCart('Pizza Carnívora (8 P. Sin Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Carnívora (8 P. Con Borde)', 70000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">70.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Carnívora (12 P. Sin Borde)', 80000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">80.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Carnívora (12 P. Con Borde)', 80000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">80.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
+                        <h4 class="font-bold text-gray-100 text-sm">Vegetariana</h4><p class="text-xs text-gray-400 mt-1">Salsa de tomate, muzzarella, zucchini, champignones, morrón, tomates, aceitunas negras y choclo.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 pt-3 border-t border-emerald-900/20 text-xs">
+                            <button onclick="addToCart('Pizza Vegetariana (8 P. Sin Borde)', 60000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">60.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Vegetariana (8 P. Con Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Vegetariana (12 P. Sin Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Vegetariana (12 P. Con Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
+                        <h4 class="font-bold text-gray-100 text-sm">Champignones a la Crema</h4><p class="text-xs text-gray-400 mt-1">Salsa de tomate, muzzarella, champignones a la crema y parmesano.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 pt-3 border-t border-emerald-900/20 text-xs">
+                            <button onclick="addToCart('Pizza Champignones (8 P. Sin Borde)', 60000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">60.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Champignones (8 P. Con Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Champignones (12 P. Sin Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Champignones (12 P. Con Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
+                        <h4 class="font-bold text-gray-100 text-sm">Cuatro Quesos</h4><p class="text-xs text-gray-400 mt-1">Opción 1: Muzzarella, catupiry, provolone y parmesano. Opción 2: Muzzarella, provolone y queso azul.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 pt-3 border-t border-emerald-900/20 text-xs">
+                            <button onclick="addToCart('Pizza Cuatro Quesos (8 P. Sin Borde)', 60000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">60.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Cuatro Quesos (8 P. Con Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Cuatro Quesos (12 P. Sin Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Cuatro Quesos (12 P. Con Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. ENTRADAS Y PARRILLITA -->
+            <div class="menu-section bg-[#141816]/60 border border-emerald-900/40 rounded-2xl p-6 shadow-xl">
+                <div class="mb-6 pb-3 border-b border-emerald-900/40">
+                    <h2 class="text-xl font-bold text-white tracking-wide flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Entradas & Parrillita</h2>
+                    <p class="text-xs text-gray-400 mt-1">Para picar o acompañar</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Bife de Chorizo</h4><p class="text-xs text-gray-400 mt-1">Elige guarnición de papas fritas o ensalada.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex flex-col gap-1 text-xs">
+                            <button onclick="addToCart('Bife de Chorizo con Papas', 40000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 px-2 py-1.5 rounded-lg border border-emerald-900/50 flex justify-between cursor-pointer"><span>Con Papas:</span> <strong class="text-emerald-400">40.000 GS.</strong></button>
+                            <button onclick="addToCart('Bife de Chorizo con Ensalada', 45000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 px-2 py-1.5 rounded-lg border border-emerald-900/50 flex justify-between cursor-pointer"><span>Con Ensalada:</span> <strong class="text-emerald-400">45.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Grille de Pollo</h4><p class="text-xs text-gray-400 mt-1">Elige guarnición de papas fritas o ensalada.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex flex-col gap-1 text-xs">
+                            <button onclick="addToCart('Grille de Pollo con Papas', 35000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 px-2 py-1.5 rounded-lg border border-emerald-900/50 flex justify-between cursor-pointer"><span>Con Papas:</span> <strong class="text-emerald-400">35.000 GS.</strong></button>
+                            <button onclick="addToCart('Grille de Pollo con Ensalada', 45000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 px-2 py-1.5 rounded-lg border border-emerald-900/50 flex justify-between cursor-pointer"><span>Con Ensalada:</span> <strong class="text-emerald-400">45.000 GS.</strong></button>
+                        </div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Nuggets de Pollo</h4><p class="text-xs text-gray-400 mt-1">Porción crujiente de nuggets.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">20.000 GS.</span><button onclick="addToCart('Nuggets de Pollo', 20000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Aros de Cebolla</h4><p class="text-xs text-gray-400 mt-1">Aros dorados y crujientes.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">20.000 GS.</span><button onclick="addToCart('Aros de Cebolla', 20000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Papa Frita Tradicional</h4><p class="text-xs text-gray-400 mt-1">Clásicas papas bastón.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">20.000 GS.</span><button onclick="addToCart('Papa Frita Tradicional', 20000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Papa Frita con Bacon y Cheddar</h4><p class="text-xs text-gray-400 mt-1">Papas con panceta crocante y cheddar fundido.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">25.000 GS.</span><button onclick="addToCart('Papa Frita con Bacon y Cheddar', 25000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
+                    </div>
+                    <!-- Picada Mixta (Sin precio) -->
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Picada Mixta</h4><p class="text-xs text-gray-400 mt-1">Incluye chorizo, nuggets de pollo, aros de cebolla y papas fritas.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-medium text-gray-400 text-xs italic">Precio a consultar</span></div>
+                    </div>
+                    <!-- Picada Fría (Sin precio) -->
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Picada Fría</h4><p class="text-xs text-gray-400 mt-1">Aceitunas, huevo de codorniz, queso, pepinillos, jamón, peperoni y salsa pesto.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-medium text-gray-400 text-xs italic">Precio a consultar</span></div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between md:col-span-2">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Parrillita Tradicional (2 Personas)</h4><p class="text-xs text-gray-400 mt-1">Tapa cuadril, cerdo, mandioca, verduras salteadas, mbeju, pollo, aros de cebolla, sopa y chorizo parrillero.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">85.000 GS.</span><button onclick="addToCart('Parrillita Tradicional (2 Personas)', 85000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. BEBIDAS SIN ALCOHOL (COMPLETAS) -->
+            <div class="menu-section bg-[#141816]/60 border border-emerald-900/40 rounded-2xl p-6 shadow-xl">
+                <div class="mb-6 pb-3 border-b border-emerald-900/40">
+                    <h2 class="text-xl font-bold text-white tracking-wide flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Bebidas Sin Alcohol</h2>
+                    <p class="text-xs text-gray-400 mt-1">Gaseosas, aguas, energizantes y jugos naturales</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">1. Coca Cola 250 ml</span><div class="flex items-center gap-2"><strong class="text-emerald-400">5.000 GS.</strong><button onclick="addToCart('Coca Cola 250 ml', 5000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">2. Coca Cola 500 ml</span><div class="flex items-center gap-2"><strong class="text-emerald-400">10.000 GS.</strong><button onclick="addToCart('Coca Cola 500 ml', 10000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">3. Coca Cola 1 Litro</span><div class="flex items-center gap-2"><strong class="text-emerald-400">12.000 GS.</strong><button onclick="addToCart('Coca Cola 1 Litro', 12000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">4. Coca Cola 1½</span><div class="flex items-center gap-2"><strong class="text-emerald-400">17.000 GS.</strong><button onclick="addToCart('Coca Cola 1½', 17000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">5. Coca Cola 2 Litros</span><div class="flex items-center gap-2"><strong class="text-emerald-400">20.000 GS.</strong><button onclick="addToCart('Coca Cola 2 Litros', 20000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">6. Agua Sin Gas</span><div class="flex items-center gap-2"><strong class="text-emerald-400">5.000 GS.</strong><button onclick="addToCart('Agua Sin Gas', 5000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">7. Agua Con Gas</span><div class="flex items-center gap-2"><strong class="text-emerald-400">6.000 GS.</strong><button onclick="addToCart('Agua Con Gas', 6000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">8. Agua Tónica</span><div class="flex items-center gap-2"><strong class="text-emerald-400">8.000 GS.</strong><button onclick="addToCart('Agua Tónica', 8000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">9. Energizante</span><div class="flex items-center gap-2"><strong class="text-emerald-400">18.000 GS.</strong><button onclick="addToCart('Energizante', 18000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">10. Powerade 1 Litro</span><div class="flex items-center gap-2"><strong class="text-emerald-400">17.000 GS.</strong><button onclick="addToCart('Powerade 1 Litro', 17000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">11. Jugo Natural de Naranja 300 ml</span><div class="flex items-center gap-2"><strong class="text-emerald-400">8.000 GS.</strong><button onclick="addToCart('Jugo Natural Naranja 300 ml', 8000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">12. Jugo Natural de Durazno 300 ml</span><div class="flex items-center gap-2"><strong class="text-emerald-400">8.000 GS.</strong><button onclick="addToCart('Jugo Natural Durazno 300 ml', 8000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">13. Jugo Natural de Piña 300 ml</span><div class="flex items-center gap-2"><strong class="text-emerald-400">8.000 GS.</strong><button onclick="addToCart('Jugo Natural Piña 300 ml', 8000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">14. Jarra de Jugo de Naranja</span><div class="flex items-center gap-2"><strong class="text-emerald-400">30.000 GS.</strong><button onclick="addToCart('Jarra Jugo Naranja', 30000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">15. Jarra de Jugo de Durazno</span><div class="flex items-center gap-2"><strong class="text-emerald-400">40.000 GS.</strong><button onclick="addToCart('Jarra Jugo Durazno', 40000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">16. Jarra de Jugo de Piña</span><div class="flex items-center gap-2"><strong class="text-emerald-400">35.000 GS.</strong><button onclick="addToCart('Jarra Jugo Piña', 35000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">17. Jugo del Valle 1 Litro</span><div class="flex items-center gap-2"><strong class="text-emerald-400">15.000 GS.</strong><button onclick="addToCart('Jugo del Valle 1 Litro', 15000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">18. Jugo del Valle 200 ml</span><div class="flex items-center gap-2"><strong class="text-emerald-400">5.000 GS.</strong><button onclick="addToCart('Jugo del Valle 200 ml', 5000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">19. Powerade 500 ml</span><div class="flex items-center gap-2"><strong class="text-emerald-400">12.000 GS.</strong><button onclick="addToCart('Powerade 500 ml', 12000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                </div>
+            </div>
+
+            <!-- 8. CERVEZAS (COMPLETAS) -->
+            <div class="menu-section bg-[#141816]/60 border border-emerald-900/40 rounded-2xl p-6 shadow-xl">
+                <div class="mb-6 pb-3 border-b border-emerald-900/40">
+                    <h2 class="text-xl font-bold text-white tracking-wide flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Cervezas</h2>
+                    <p class="text-xs text-gray-400 mt-1">Chopp, latas, botellas y torres bien frías</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">1. Chopp Munich 300 ml</span><div class="flex items-center gap-2"><strong class="text-emerald-400">10.000 GS.</strong><button onclick="addToCart('Chopp Munich 300 ml', 10000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">2. Chopp Munich 500 ml</span><div class="flex items-center gap-2"><strong class="text-emerald-400">17.000 GS.</strong><button onclick="addToCart('Chopp Munich 500 ml', 17000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">3. Promo Chop 500 ml (2x)</span><div class="flex items-center gap-2"><strong class="text-emerald-400">30.000 GS.</strong><button onclick="addToCart('Promo Chop 500 ml (2x)', 30000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">4. Munich Original 600 ml</span><div class="flex items-center gap-2"><strong class="text-emerald-400">10.000 GS.</strong><button onclick="addToCart('Munich Original 600 ml', 10000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">5. Múnich Ultra 600 ml</span><div class="flex items-center gap-2"><strong class="text-emerald-400">14.000 GS.</strong><button onclick="addToCart('Múnich Ultra 600 ml', 14000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">6. Skol 1 Litro</span><div class="flex items-center gap-2"><strong class="text-emerald-400">12.000 GS.</strong><button onclick="addToCart('Skol 1 Litro', 12000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">7. Ouro Fino 1 Litro</span><div class="flex items-center gap-2"><strong class="text-emerald-400">10.000 GS.</strong><button onclick="addToCart('Ouro Fino 1 Litro', 10000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">8. Brahma 1 Litro</span><div class="flex items-center gap-2"><strong class="text-emerald-400">10.000 GS.</strong><button onclick="addToCart('Brahma 1 Litro', 10000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">9. Brahma Subzero 1 Litro</span><div class="flex items-center gap-2"><strong class="text-emerald-400">10.000 GS.</strong><button onclick="addToCart('Brahma Subzero 1 Litro', 10000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">10. Skol 275 ml</span><div class="flex items-center gap-2"><strong class="text-emerald-400">7.000 GS.</strong><button onclick="addToCart('Skol 275 ml', 7000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">11. Bud66 310 ml</span><div class="flex items-center gap-2"><strong class="text-emerald-400">7.000 GS.</strong><button onclick="addToCart('Bud66 310 ml', 7000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">12. Michelob Ultra 710 ml</span><div class="flex items-center gap-2"><strong class="text-emerald-400">12.000 GS.</strong><button onclick="addToCart('Michelob Ultra 710 ml', 12000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">13. Bud66 710 ml</span><div class="flex items-center gap-2"><strong class="text-emerald-400">15.000 GS.</strong><button onclick="addToCart('Bud66 710 ml', 15000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">14. Michelob 269</span><div class="flex items-center gap-2"><strong class="text-emerald-400">5.000 GS.</strong><button onclick="addToCart('Michelob 269', 5000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">15. Torre Chop</span><div class="flex items-center gap-2"><strong class="text-emerald-400">70.000 GS.</strong><button onclick="addToCart('Torre Chop', 70000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">16. Múnich Ultra 300 ml</span><div class="flex items-center gap-2"><strong class="text-emerald-400">7.000 GS.</strong><button onclick="addToCart('Múnich Ultra 300 ml', 7000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">17. Múnich Original</span><div class="flex items-center gap-2"><strong class="text-emerald-400">5.000 GS.</strong><button onclick="addToCart('Múnich Original', 5000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                </div>
+            </div>
+
+            <!-- 9. TRAGOS (COMPLETOS) -->
+            <div class="menu-section bg-[#141816]/60 border border-emerald-900/40 rounded-2xl p-6 shadow-xl">
+                <div class="mb-6 pb-3 border-b border-emerald-900/40">
+                    <h2 class="text-xl font-bold text-white tracking-wide flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Tragos</h2>
+                    <p class="text-xs text-gray-400 mt-1">Coctelería y jarras especiales</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">1. Caipiriña</span><div class="flex items-center gap-2"><strong class="text-emerald-400">20.000 GS.</strong><button onclick="addToCart('Caipiriña', 20000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">2. Caipiriña Jarra</span><div class="flex items-center gap-2"><strong class="text-emerald-400">45.000 GS.</strong><button onclick="addToCart('Caipiriña Jarra', 45000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">3. Caipiruva</span><div class="flex items-center gap-2"><strong class="text-emerald-400">25.000 GS.</strong><button onclick="addToCart('Caipiruva', 25000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">4. Caipicorona</span><div class="flex items-center gap-2"><strong class="text-emerald-400">30.000 GS.</strong><button onclick="addToCart('Caipicorona', 30000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">5. Mojito</span><div class="flex items-center gap-2"><strong class="text-emerald-400">20.000 GS.</strong><button onclick="addToCart('Mojito', 20000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">6. Piña Colada</span><div class="flex items-center gap-2"><strong class="text-emerald-400">25.000 GS.</strong><button onclick="addToCart('Piña Colada', 25000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">7. Daiquiri de Durazno</span><div class="flex items-center gap-2"><strong class="text-emerald-400">25.000 GS.</strong><button onclick="addToCart('Daiquiri de Durazno', 25000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">8. Daiquiri de Frutilla</span><div class="flex items-center gap-2"><strong class="text-emerald-400">25.000 GS.</strong><button onclick="addToCart('Daiquiri de Frutilla', 25000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">9. Negroni</span><div class="flex items-center gap-2"><strong class="text-emerald-400">27.000 GS.</strong><button onclick="addToCart('Negroni', 27000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">10. Fernet</span><div class="flex items-center gap-2"><strong class="text-emerald-400">17.000 GS.</strong><button onclick="addToCart('Fernet', 17000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">11. Esperma de Pitufo</span><div class="flex items-center gap-2"><strong class="text-emerald-400">25.000 GS.</strong><button onclick="addToCart('Esperma de Pitufo', 25000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">12. Destornillador</span><div class="flex items-center gap-2"><strong class="text-emerald-400">25.000 GS.</strong><button onclick="addToCart('Destornillador', 25000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">13. Gin Tonic</span><div class="flex items-center gap-2"><strong class="text-emerald-400">25.000 GS.</strong><button onclick="addToCart('Gin Tonic', 25000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">14. Aperol Split</span><div class="flex items-center gap-2"><strong class="text-emerald-400">35.000 GS.</strong><button onclick="addToCart('Aperol Split', 35000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">15. Sex and the Beach</span><div class="flex items-center gap-2"><strong class="text-emerald-400">25.000 GS.</strong><button onclick="addToCart('Sex and the Beach', 25000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">16. Pantera Rosa</span><div class="flex items-center gap-2"><strong class="text-emerald-400">25.000 GS.</strong><button onclick="addToCart('Pantera Rosa', 25000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">17. Sangría Jarra</span><div class="flex items-center gap-2"><strong class="text-emerald-400">45.000 GS.</strong><button onclick="addToCart('Sangría Jarra', 45000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-3 flex items-center justify-between"><span class="font-medium text-gray-200">18. Frutos Rojos</span><div class="flex items-center gap-2"><strong class="text-emerald-400">25.000 GS.</strong><button onclick="addToCart('Frutos Rojos', 25000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg cursor-pointer">+</button></div></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CART PANEL -->
+        <div class="lg:col-span-1">
+            <div class="sticky top-28 bg-[#141816] rounded-2xl border border-emerald-900/60 p-5 shadow-2xl emerald-glow">
+                <div class="flex items-center justify-between pb-4 border-b border-emerald-900/40">
+                    <h3 class="font-bold text-lg text-white flex items-center gap-2">🛒 Tu Pedido</h3>
+                    <span id="cart-count" class="bg-emerald-500 text-black text-xs font-bold px-2.5 py-1 rounded-full">0</span>
+                </div>
+
+                <div id="cart-items" class="divide-y divide-emerald-900/20 max-h-80 overflow-y-auto my-4 pr-1 space-y-3">
+                    <p class="text-xs text-gray-500 text-center py-8">Tu carrito está vacío.<br>Selecciona tus platos favoritos.</p>
+                </div>
+
+                <div class="border-t border-emerald-900/40 pt-4 space-y-3">
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-gray-400">Total estimado:</span>
+                        <span id="cart-total" class="font-bold text-lg text-emerald-400">0 GS.</span>
+                    </div>
+
+                    <div class="space-y-2 pt-2">
+                        <input type="text" id="client-name" placeholder="Tu Nombre y Apellido" class="w-full bg-[#0B0D0C] text-sm text-gray-200 placeholder-gray-500 px-3 py-2 rounded-xl border border-emerald-900/60 focus:outline-none focus:border-emerald-500">
+                        <input type="text" id="client-table" placeholder="Nro. de Mesa o 'Delivery'" class="w-full bg-[#0B0D0C] text-sm text-gray-200 placeholder-gray-500 px-3 py-2 rounded-xl border border-emerald-900/60 focus:outline-none focus:border-emerald-500">
+                    </div>
+
+                    <button onclick="sendWhatsAppOrder()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-3 px-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 text-sm uppercase tracking-wider cursor-pointer">
+                        📱 Enviar Pedido por WhatsApp
+                    </button>
+                    
+                    <button onclick="window.print()" class="w-full bg-[#0B0D0C] hover:bg-emerald-950/40 text-emerald-400 border border-emerald-900/60 font-semibold py-2 px-4 rounded-xl transition-all text-xs flex items-center justify-center gap-2 cursor-pointer">
+                        🖨️ Imprimir Menú
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#101412] border-t border-emerald-900/30 py-6 mt-12 text-center text-xs text-gray-500">
+        <p class="font-medium text-gray-400">Villa Hayes Food Park © 2026</p>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ name, price, qty: 1 });
+            }
+            updateCartUI();
+        }
+
+        function changeQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartContainer = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+
+            let totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+            let totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            cartCount.textContent = totalCount;
+            cartTotal.textContent = totalPrice.toLocaleString() + " GS.";
+
+            if (cart.length === 0) {
+                cartContainer.innerHTML = `<p class="text-xs text-gray-500 text-center py-8">Tu carrito está vacío.<br>Selecciona tus platos favoritos.</p>`;
+                return;
+            }
+
+            cartContainer.innerHTML = '';
+            cart.forEach((item, index) => {
+                const el = document.createElement('div');
+                el.className = "py-2.5 flex justify-between items-center text-xs";
+                el.innerHTML = `
+                    <div class="flex-1 pr-2">
+                        <p class="font-semibold text-gray-200">${item.name}</p>
+                        <p class="text-emerald-400 font-medium">${(item.price * item.qty).toLocaleString()} GS.</p>
+                    </div>
+                    <div class="flex items-center gap-2 bg-[#0B0D0C] border border-emerald-900/50 rounded-lg p-1">
+                        <button onclick="changeQty(${index}, -1)" class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-white cursor-pointer">-</button>
+                        <span class="font-bold text-white px-1">${item.qty}</span>
+                        <button onclick="changeQty(${index}, 1)" class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-white cursor-pointer">+</button>
+                    </div>
+                `;
+                cartContainer.appendChild(el);
+            });
+        }
+
+        function filterMenu() {
+            const term = document.getElementById('searchInput').value.toLowerCase();
+            const sections = document.querySelectorAll('.menu-section');
+
+            sections.forEach(section => {
+                const items = section.querySelectorAll('.food-item');
+                let sectionHasMatch = false;
+
+                items.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(term)) {
+                        item.style.display = "";
+                        sectionHasMatch = true;
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+
+                section.style.display = (sectionHasMatch || term === "") ? "block" : "none";
+            });
+        }
+
+        function sendWhatsAppOrder() {
+            if (cart.length === 0) {
+                alert("Por favor selecciona al menos un plato o bebida antes de enviar tu pedido.");
+                return;
+            }
+
+            const name = document.getElementById('client-name').value.trim();
+            const table = document.getElementById('client-table').value.trim();
+
+            if (!name) {
+                alert("Por favor ingresa tu nombre y apellido.");
+                document.getElementById('client-name').focus();
+                return;
+            }
+
+            let message = `*¡Nuevo Pedido - Villa Hayes Food Park!* 🍔\n\n`;
+            message += `👤 *Cliente:* ${name}\n`;
+            message += `📍 *Mesa / Ubicación:* ${table || 'No especificada'}\n\n`;
+            message += `--------------------------------\n`;
+            
+            cart.forEach(item => {
+                message += `• ${item.qty}x ${item.name} - *${(item.price * item.qty).toLocaleString()} GS.*\n`;
+            });
+
+            let totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            message += `--------------------------------\n`;
+            message += `💰 *TOTAL A PAGAR: ${totalPrice.toLocaleString()} GS.*`;
+
+            const phoneNumber = "595981000000"; 
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
