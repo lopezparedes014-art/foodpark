@@ -353,9 +353,13 @@
                         <div><h4 class="font-bold text-gray-100 text-sm">Picada Fría</h4><p class="text-xs text-gray-400 mt-1">Aceitunas, huevo de codorniz, queso, pepinillos, jamón, peperoni y salsa pesto.</p></div>
                         <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-medium text-gray-400 text-xs italic">Precio a consultar</span></div>
                     </div>
-                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between md:col-span-2">
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
                         <div><h4 class="font-bold text-gray-100 text-sm">Parrillita Tradicional (2 Personas)</h4><p class="text-xs text-gray-400 mt-1">Tapa cuadril, cerdo, mandioca, verduras salteadas, mbeju, pollo, aros de cebolla, sopa y chorizo parrillero.</p></div>
                         <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">85.000 GS.</span><button onclick="addToCart('Parrillita Tradicional (2 Personas)', 85000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
+                    </div>
+                    <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
+                        <div><h4 class="font-bold text-gray-100 text-sm">Parrillita Tradicional (4 Personas)</h4><p class="text-xs text-gray-400 mt-1">Tapa cuadril, cerdo, mandioca, verduras salteadas, mbeju, pollo, aros de cebolla, sopa y chorizo parrillero.</p></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">150.000 GS.</span><button onclick="addToCart('Parrillita Tradicional (4 Personas)', 150000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
                     </div>
                 </div>
             </div>
@@ -594,7 +598,7 @@
             message += `--------------------------------\n`;
             message += `💰 *TOTAL A PAGAR: ${totalPrice.toLocaleString()} GS.*`;
 
-            const phoneNumber = "595981000000"; 
+            const phoneNumber = "595987585014"; 
             const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
         }
