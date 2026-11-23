@@ -168,38 +168,37 @@
                     <p class="text-xs text-gray-400 mt-1">Elige tamaño (8 o 12 porciones), borde tradicional o relleno, o arma tu pizza de 2 sabores</p>
                 </div>
 
-                <!-- APARTADO 2 SABORES -->
+                <!-- APARTADO 2 SABORES (PRECIO A CONSULTAR) -->
                 <div class="food-item bg-gradient-to-br from-emerald-950/50 to-[#0B0D0C] border border-emerald-500/40 rounded-xl p-4 mb-5 shadow-lg">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                         <div>
                             <span class="inline-block bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md mb-1">2 Sabores</span>
                             <h4 class="font-bold text-white text-sm">Pizza de 2 Sabores (Mitad y Mitad)</h4>
-                            <p class="text-xs text-gray-400 mt-0.5">Elige 2 sabores, porciones y borde. Si tienen distinto precio, se aplica el de mayor valor.</p>
+                            <p class="text-xs text-gray-400 mt-0.5">Elige 2 sabores, porciones y borde para incluir en tu pedido.</p>
                         </div>
                         <div class="text-left sm:text-right">
-                            <span class="block text-[10px] text-gray-400">Precio:</span>
-                            <span id="half-pizza-price" class="font-extrabold text-emerald-400 text-base">45.000 GS.</span>
+                            <span class="font-medium text-gray-400 text-xs italic">Precio a consultar</span>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 pt-3 border-t border-emerald-900/30 text-xs">
                         <div>
                             <label for="flavor-1" class="block text-[11px] text-emerald-300/90 font-semibold mb-1">Sabor 1</label>
-                            <select id="flavor-1" onchange="updateHalfPizzaPrice()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
+                            <select id="flavor-1" onchange="updateHalfPizzaSummary()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
                                 <option value="">-- Sabor 1 --</option>
                             </select>
                         </div>
 
                         <div>
                             <label for="flavor-2" class="block text-[11px] text-emerald-300/90 font-semibold mb-1">Sabor 2</label>
-                            <select id="flavor-2" onchange="updateHalfPizzaPrice()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
+                            <select id="flavor-2" onchange="updateHalfPizzaSummary()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
                                 <option value="">-- Sabor 2 --</option>
                             </select>
                         </div>
 
                         <div>
                             <label for="half-size" class="block text-[11px] text-gray-300 font-semibold mb-1">Porciones</label>
-                            <select id="half-size" onchange="updateHalfPizzaPrice()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
+                            <select id="half-size" onchange="updateHalfPizzaSummary()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
                                 <option value="8" selected>8 Porciones</option>
                                 <option value="12">12 Porciones</option>
                             </select>
@@ -207,7 +206,7 @@
 
                         <div>
                             <label for="half-crust" class="block text-[11px] text-gray-300 font-semibold mb-1">Borde</label>
-                            <select id="half-crust" onchange="updateHalfPizzaPrice()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
+                            <select id="half-crust" onchange="updateHalfPizzaSummary()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
                                 <option value="sin" selected>Sin Borde</option>
                                 <option value="con">Con Borde</option>
                             </select>
@@ -550,30 +549,29 @@
     <script>
         let cart = [];
 
-        const pizzaFlavors = {
-            "Muzzarella": { "8_sin": 45000, "8_con": 55000, "12_sin": 65000, "12_con": 75000 },
-            "Pepperoni": { "8_sin": 55000, "8_con": 65000, "12_sin": 75000, "12_con": 85000 },
-            "Choclo": { "8_sin": 50000, "8_con": 60000, "12_sin": 70000, "12_con": 80000 },
-            "Mexicana": { "8_sin": 65000, "8_con": 70000, "12_sin": 80000, "12_con": 90000 },
-            "Jamón y Queso": { "8_sin": 50000, "8_con": 65000, "12_sin": 70000, "12_con": 80000 },
-            "Catupollo": { "8_sin": 65000, "8_con": 70000, "12_sin": 75000, "12_con": 85000 },
-            "Napolitana": { "8_sin": 55000, "8_con": 65000, "12_sin": 75000, "12_con": 85000 },
-            "Catupiri": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 85000 },
-            "Panceta y Cheddar": { "8_sin": 65000, "8_con": 70000, "12_sin": 80000, "12_con": 90000 },
-            "Palmitos": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 85000 },
-            "Katucarne": { "8_sin": 65000, "8_con": 70000, "12_sin": 75000, "12_con": 90000 },
-            "Carnívora": { "8_sin": 65000, "8_con": 70000, "12_sin": 80000, "12_con": 90000 },
-            "Vegetariana": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 85000 },
-            "Champignones a la Crema": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 85000 },
-            "Cuatro Quesos": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 85000 }
-        };
+        const pizzaFlavorList = [
+            "Muzzarella",
+            "Pepperoni",
+            "Choclo",
+            "Mexicana",
+            "Jamón y Queso",
+            "Catupollo",
+            "Napolitana",
+            "Catupiri",
+            "Panceta y Cheddar",
+            "Palmitos",
+            "Katucarne",
+            "Carnívora",
+            "Vegetariana",
+            "Champignones a la Crema",
+            "Cuatro Quesos"
+        ];
 
         function initPizzaFlavorSelectors() {
             const f1 = document.getElementById('flavor-1');
             const f2 = document.getElementById('flavor-2');
-            const names = Object.keys(pizzaFlavors);
 
-            names.forEach(name => {
+            pizzaFlavorList.forEach(name => {
                 const opt1 = document.createElement('option');
                 opt1.value = name;
                 opt1.textContent = name;
@@ -585,37 +583,14 @@
                 f2.appendChild(opt2);
             });
 
-            updateHalfPizzaPrice();
+            updateHalfPizzaSummary();
         }
 
-        function getHalfPizzaVariantKey() {
-            const size = document.getElementById('half-size').value;
-            const crust = document.getElementById('half-crust').value;
-            return `${size}_${crust}`;
-        }
-
-        function calculateHalfPizzaPrice() {
-            const f1 = document.getElementById('flavor-1').value;
-            const f2 = document.getElementById('flavor-2').value;
-            const key = getHalfPizzaVariantKey();
-
-            const p1 = f1 ? pizzaFlavors[f1][key] : 0;
-            const p2 = f2 ? pizzaFlavors[f2][key] : 0;
-
-            if (f1 && f2) return Math.max(p1, p2);
-            if (f1) return p1;
-            if (f2) return p2;
-            return pizzaFlavors["Muzzarella"][key];
-        }
-
-        function updateHalfPizzaPrice() {
+        function updateHalfPizzaSummary() {
             const f1 = document.getElementById('flavor-1').value;
             const f2 = document.getElementById('flavor-2').value;
             const size = document.getElementById('half-size').value;
             const crustLabel = document.getElementById('half-crust').value === 'con' ? 'Con Borde' : 'Sin Borde';
-            const price = calculateHalfPizzaPrice();
-
-            document.getElementById('half-pizza-price').textContent = price.toLocaleString() + " GS.";
 
             const summaryEl = document.getElementById('half-pizza-summary');
             if (!f1 && !f2) {
@@ -640,9 +615,8 @@
                 return;
             }
 
-            const price = calculateHalfPizzaPrice();
             const itemName = `Pizza 2 Sabores: ½ ${f1} + ½ ${f2} (${size} P. ${crustLabel})`;
-            addToCart(itemName, price);
+            addToCart(itemName, null);
         }
 
         function addToCart(name, price) {
@@ -669,10 +643,13 @@
             const cartTotal = document.getElementById('cart-total');
 
             let totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
-            let totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            let totalPrice = cart.reduce((sum, item) => sum + (item.price ? item.price * item.qty : 0), 0);
+            let hasConsultItem = cart.some(item => item.price === null);
 
             cartCount.textContent = totalCount;
-            cartTotal.textContent = totalPrice.toLocaleString() + " GS.";
+            cartTotal.textContent = hasConsultItem
+                ? `${totalPrice.toLocaleString()} GS. + a consultar`
+                : `${totalPrice.toLocaleString()} GS.`;
 
             if (cart.length === 0) {
                 cartContainer.innerHTML = `<p class="text-xs text-gray-500 text-center py-8">Tu carrito está vacío.<br>Selecciona tus platos favoritos.</p>`;
@@ -683,10 +660,14 @@
             cart.forEach((item, index) => {
                 const el = document.createElement('div');
                 el.className = "py-2.5 flex justify-between items-center text-xs";
+                const priceLabel = item.price === null
+                    ? `<p class="text-gray-400 italic">Precio a consultar</p>`
+                    : `<p class="text-emerald-400 font-medium">${(item.price * item.qty).toLocaleString()} GS.</p>`;
+
                 el.innerHTML = `
                     <div class="flex-1 pr-2">
                         <p class="font-semibold text-gray-200">${item.name}</p>
-                        <p class="text-emerald-400 font-medium">${(item.price * item.qty).toLocaleString()} GS.</p>
+                        ${priceLabel}
                     </div>
                     <div class="flex items-center gap-2 bg-[#0B0D0C] border border-emerald-900/50 rounded-lg p-1">
                         <button onclick="changeQty(${index}, -1)" class="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-white cursor-pointer">-</button>
@@ -741,12 +722,18 @@
             message += `--------------------------------\n`;
             
             cart.forEach(item => {
-                message += `• ${item.qty}x ${item.name} - *${(item.price * item.qty).toLocaleString()} GS.*\n`;
+                const itemTotal = item.price === null
+                    ? `*Precio a consultar*`
+                    : `*${(item.price * item.qty).toLocaleString()} GS.*`;
+                message += `• ${item.qty}x ${item.name} - ${itemTotal}\n`;
             });
 
-            let totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            let totalPrice = cart.reduce((sum, item) => sum + (item.price ? item.price * item.qty : 0), 0);
+            let hasConsultItem = cart.some(item => item.price === null);
             message += `--------------------------------\n`;
-            message += `💰 *TOTAL A PAGAR: ${totalPrice.toLocaleString()} GS.*`;
+            message += hasConsultItem
+                ? `💰 *TOTAL A PAGAR: ${totalPrice.toLocaleString()} GS. (+ ítems a consultar)*`
+                : `💰 *TOTAL A PAGAR: ${totalPrice.toLocaleString()} GS.*`;
 
             const phoneNumber = "595987585014"; 
             const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
@@ -757,4 +744,3 @@
     </script>
 </body>
 </html>
-
