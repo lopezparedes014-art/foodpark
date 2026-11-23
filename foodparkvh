@@ -161,12 +161,68 @@
                 </div>
             </div>
 
-            <!-- 5. PIZZAS TRADICIONALES -->
+            <!-- 5. PIZZAS TRADICIONALES + MITAD Y MITAD -->
             <div class="menu-section bg-[#141816]/60 border border-emerald-900/40 rounded-2xl p-6 shadow-xl">
                 <div class="mb-6 pb-3 border-b border-emerald-900/40">
                     <h2 class="text-xl font-bold text-white tracking-wide flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Pizzas</h2>
-                    <p class="text-xs text-gray-400 mt-1">Elige tamaño (8 o 12 porciones) y borde tradicional o relleno</p>
+                    <p class="text-xs text-gray-400 mt-1">Elige tamaño (8 o 12 porciones), borde tradicional o relleno, o arma tu pizza con 2 sabores</p>
                 </div>
+
+                <!-- OPCION 2 SABORES (MITAD Y MITAD) -->
+                <div class="food-item bg-gradient-to-br from-emerald-950/50 to-[#0B0D0C] border border-emerald-500/40 rounded-xl p-4 mb-5 shadow-lg">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                        <div>
+                            <span class="inline-block bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md mb-1">2 Sabores en 1 Pizza</span>
+                            <h4 class="font-bold text-white text-sm">Pizza Mitad y Mitad (Elige 2 Sabores)</h4>
+                            <p class="text-xs text-gray-400 mt-0.5">Combina dos sabores a elección. Si los sabores tienen precios distintos, se aplica el de mayor valor según tamaño y borde.</p>
+                        </div>
+                        <div class="text-left sm:text-right">
+                            <span class="block text-[10px] text-gray-400">Precio calculado:</span>
+                            <span id="half-pizza-price" class="font-extrabold text-emerald-400 text-base">45.000 GS.</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 pt-3 border-t border-emerald-900/30 text-xs">
+                        <div>
+                            <label for="flavor-1" class="block text-[11px] text-emerald-300/90 font-semibold mb-1">1° Mitad (Sabor 1)</label>
+                            <select id="flavor-1" onchange="updateHalfPizzaPrice()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
+                                <option value="">-- Elegir sabor 1 --</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="flavor-2" class="block text-[11px] text-emerald-300/90 font-semibold mb-1">2° Mitad (Sabor 2)</label>
+                            <select id="flavor-2" onchange="updateHalfPizzaPrice()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
+                                <option value="">-- Elegir sabor 2 --</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="half-size" class="block text-[11px] text-gray-300 font-semibold mb-1">Tamaño</label>
+                            <select id="half-size" onchange="updateHalfPizzaPrice()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
+                                <option value="8" selected>8 Porciones</option>
+                                <option value="12">12 Porciones</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="half-crust" class="block text-[11px] text-gray-300 font-semibold mb-1">Borde</label>
+                            <select id="half-crust" onchange="updateHalfPizzaPrice()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
+                                <option value="sin" selected>Sin Borde</option>
+                                <option value="con">Con Borde</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mt-3 pt-3 border-t border-emerald-900/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <p id="half-pizza-summary" class="text-xs text-gray-400">Selecciona ambos sabores para ver el detalle.</p>
+                        <button onclick="addHalfPizzaToCart()" class="bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs px-4 py-2 rounded-lg transition-all shadow cursor-pointer shrink-0">
+                            + Agregar Pizza 2 Sabores
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SABORES INDIVIDUALES -->
                 <div class="space-y-4">
                     <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
                         <h4 class="font-bold text-gray-100 text-sm">Muzzarella</h4><p class="text-xs text-gray-400 mt-1">Queso muzzarella, orégano, aceituna, salsa de tomate.</p>
@@ -495,6 +551,101 @@
     <script>
         let cart = [];
 
+        const pizzaFlavors = {
+            "Muzzarella": { "8_sin": 45000, "8_con": 55000, "12_sin": 65000, "12_con": 75000 },
+            "Pepperoni": { "8_sin": 55000, "8_con": 65000, "12_sin": 75000, "12_con": 85000 },
+            "Choclo": { "8_sin": 50000, "8_con": 60000, "12_sin": 70000, "12_con": 80000 },
+            "Mexicana": { "8_sin": 65000, "8_con": 70000, "12_sin": 80000, "12_con": 90000 },
+            "Jamón y Queso": { "8_sin": 50000, "8_con": 65000, "12_sin": 70000, "12_con": 80000 },
+            "Catupollo": { "8_sin": 65000, "8_con": 70000, "12_sin": 75000, "12_con": 85000 },
+            "Napolitana": { "8_sin": 55000, "8_con": 65000, "12_sin": 75000, "12_con": 85000 },
+            "Catupiri": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 85000 },
+            "Panceta y Cheddar": { "8_sin": 65000, "8_con": 70000, "12_sin": 80000, "12_con": 90000 },
+            "Palmitos": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 75000 },
+            "Katucarne": { "8_sin": 65000, "8_con": 70000, "12_sin": 75000, "12_con": 75000 },
+            "Carnívora": { "8_sin": 65000, "8_con": 70000, "12_sin": 80000, "12_con": 80000 },
+            "Vegetariana": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 75000 },
+            "Champignones a la Crema": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 75000 },
+            "Cuatro Quesos": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 75000 }
+        };
+
+        function initPizzaFlavorSelectors() {
+            const f1 = document.getElementById('flavor-1');
+            const f2 = document.getElementById('flavor-2');
+            const names = Object.keys(pizzaFlavors);
+
+            names.forEach(name => {
+                const opt1 = document.createElement('option');
+                opt1.value = name;
+                opt1.textContent = name;
+                f1.appendChild(opt1);
+
+                const opt2 = document.createElement('option');
+                opt2.value = name;
+                opt2.textContent = name;
+                f2.appendChild(opt2);
+            });
+
+            updateHalfPizzaPrice();
+        }
+
+        function getHalfPizzaVariantKey() {
+            const size = document.getElementById('half-size').value;
+            const crust = document.getElementById('half-crust').value;
+            return `${size}_${crust}`;
+        }
+
+        function calculateHalfPizzaPrice() {
+            const f1 = document.getElementById('flavor-1').value;
+            const f2 = document.getElementById('flavor-2').value;
+            const key = getHalfPizzaVariantKey();
+
+            const p1 = f1 ? pizzaFlavors[f1][key] : 0;
+            const p2 = f2 ? pizzaFlavors[f2][key] : 0;
+
+            if (f1 && f2) return Math.max(p1, p2);
+            if (f1) return p1;
+            if (f2) return p2;
+            return pizzaFlavors["Muzzarella"][key];
+        }
+
+        function updateHalfPizzaPrice() {
+            const f1 = document.getElementById('flavor-1').value;
+            const f2 = document.getElementById('flavor-2').value;
+            const size = document.getElementById('half-size').value;
+            const crustLabel = document.getElementById('half-crust').value === 'con' ? 'Con Borde' : 'Sin Borde';
+            const price = calculateHalfPizzaPrice();
+
+            document.getElementById('half-pizza-price').textContent = price.toLocaleString() + " GS.";
+
+            const summaryEl = document.getElementById('half-pizza-summary');
+            if (!f1 && !f2) {
+                summaryEl.textContent = `Base: ${size} Porciones · ${crustLabel}. Elige ambos sabores.`;
+            } else if (f1 && !f2) {
+                summaryEl.textContent = `1° Mitad: ${f1} · Falta elegir 2° Mitad (${size} P. ${crustLabel}).`;
+            } else if (!f1 && f2) {
+                summaryEl.textContent = `Falta elegir 1° Mitad · 2° Mitad: ${f2} (${size} P. ${crustLabel}).`;
+            } else {
+                summaryEl.textContent = `½ ${f1} + ½ ${f2} (${size} P. ${crustLabel})`;
+            }
+        }
+
+        function addHalfPizzaToCart() {
+            const f1 = document.getElementById('flavor-1').value;
+            const f2 = document.getElementById('flavor-2').value;
+            const size = document.getElementById('half-size').value;
+            const crustLabel = document.getElementById('half-crust').value === 'con' ? 'Con Borde' : 'Sin Borde';
+
+            if (!f1 || !f2) {
+                alert("Por favor selecciona los 2 sabores para armar tu pizza mitad y mitad.");
+                return;
+            }
+
+            const price = calculateHalfPizzaPrice();
+            const itemName = `Pizza Mitad y Mitad: ½ ${f1} + ½ ${f2} (${size} P. ${crustLabel})`;
+            addToCart(itemName, price);
+        }
+
         function addToCart(name, price) {
             const existing = cart.find(item => item.name === name);
             if (existing) {
@@ -602,6 +753,8 @@
             const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
         }
+
+        initPizzaFlavorSelectors();
     </script>
 </body>
 </html>
