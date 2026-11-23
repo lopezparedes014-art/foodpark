@@ -311,7 +311,7 @@
                             <button onclick="addToCart('Pizza Palmitos (8 P. Sin Borde)', 60000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">60.000 GS.</strong></button>
                             <button onclick="addToCart('Pizza Palmitos (8 P. Con Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
                             <button onclick="addToCart('Pizza Palmitos (12 P. Sin Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
-                            <button onclick="addToCart('Pizza Palmitos (12 P. Con Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Palmitos (12 P. Con Borde)', 85000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">85.000 GS.</strong></button>
                         </div>
                     </div>
                     <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
@@ -320,7 +320,7 @@
                             <button onclick="addToCart('Pizza Katucarne (8 P. Sin Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
                             <button onclick="addToCart('Pizza Katucarne (8 P. Con Borde)', 70000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">70.000 GS.</strong></button>
                             <button onclick="addToCart('Pizza Katucarne (12 P. Sin Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
-                            <button onclick="addToCart('Pizza Katucarne (12 P. Con Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Katucarne (12 P. Con Borde)', 90000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">90.000 GS.</strong></button>
                         </div>
                     </div>
                     <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
@@ -329,7 +329,7 @@
                             <button onclick="addToCart('Pizza Carnívora (8 P. Sin Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
                             <button onclick="addToCart('Pizza Carnívora (8 P. Con Borde)', 70000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">70.000 GS.</strong></button>
                             <button onclick="addToCart('Pizza Carnívora (12 P. Sin Borde)', 80000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">80.000 GS.</strong></button>
-                            <button onclick="addToCart('Pizza Carnívora (12 P. Con Borde)', 80000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">80.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Carnívora (12 P. Con Borde)', 90000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">90.000 GS.</strong></button>
                         </div>
                     </div>
                     <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
@@ -338,7 +338,7 @@
                             <button onclick="addToCart('Pizza Vegetariana (8 P. Sin Borde)', 60000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">60.000 GS.</strong></button>
                             <button onclick="addToCart('Pizza Vegetariana (8 P. Con Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
                             <button onclick="addToCart('Pizza Vegetariana (12 P. Sin Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
-                            <button onclick="addToCart('Pizza Vegetariana (12 P. Con Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Vegetariana (12 P. Con Borde)', 85000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">85.000 GS.</strong></button>
                         </div>
                     </div>
                     <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
@@ -347,7 +347,7 @@
                             <button onclick="addToCart('Pizza Champignones (8 P. Sin Borde)', 60000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">60.000 GS.</strong></button>
                             <button onclick="addToCart('Pizza Champignones (8 P. Con Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
                             <button onclick="addToCart('Pizza Champignones (12 P. Sin Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
-                            <button onclick="addToCart('Pizza Champignones (12 P. Con Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Champignones (12 P. Con Borde)', 85000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">85.000 GS.</strong></button>
                         </div>
                     </div>
                     <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4">
@@ -356,7 +356,7 @@
                             <button onclick="addToCart('Pizza Cuatro Quesos (8 P. Sin Borde)', 60000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Sin Borde</span><strong class="text-emerald-400">60.000 GS.</strong></button>
                             <button onclick="addToCart('Pizza Cuatro Quesos (8 P. Con Borde)', 65000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">8 P. Con Borde</span><strong class="text-emerald-400">65.000 GS.</strong></button>
                             <button onclick="addToCart('Pizza Cuatro Quesos (12 P. Sin Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Sin Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
-                            <button onclick="addToCart('Pizza Cuatro Quesos (12 P. Con Borde)', 75000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">75.000 GS.</strong></button>
+                            <button onclick="addToCart('Pizza Cuatro Quesos (12 P. Con Borde)', 85000)" class="bg-[#141816] hover:bg-emerald-500 hover:text-black text-gray-300 p-2 rounded-lg border border-emerald-900/40 text-center cursor-pointer"><span class="block text-[10px] text-gray-400">12 P. Con Borde</span><strong class="text-emerald-400">85.000 GS.</strong></button>
                         </div>
                     </div>
                 </div>
@@ -399,10 +399,9 @@
                         <div><h4 class="font-bold text-gray-100 text-sm">Papa Frita con Bacon y Cheddar</h4><p class="text-xs text-gray-400 mt-1">Papas con panceta crocante y cheddar fundido.</p></div>
                         <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">25.000 GS.</span><button onclick="addToCart('Papa Frita con Bacon y Cheddar', 25000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
                     </div>
-                    <!-- Picada Mixta (Sin precio) -->
                     <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
                         <div><h4 class="font-bold text-gray-100 text-sm">Picada Mixta</h4><p class="text-xs text-gray-400 mt-1">Incluye chorizo, nuggets de pollo, aros de cebolla y papas fritas.</p></div>
-                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-medium text-gray-400 text-xs italic">Precio a consultar</span></div>
+                        <div class="mt-4 pt-3 border-t border-emerald-900/20 flex items-center justify-between"><span class="font-bold text-emerald-400 text-sm">30.000 GS.</span><button onclick="addToCart('Picada Mixta', 30000)" class="bg-emerald-500/10 hover:bg-emerald-500 hover:text-black text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer">+ Agregar</button></div>
                     </div>
                     <!-- Picada Fría (Sin precio) -->
                     <div class="food-item bg-[#0B0D0C] border border-emerald-900/30 rounded-xl p-4 flex flex-col justify-between">
@@ -561,12 +560,12 @@
             "Napolitana": { "8_sin": 55000, "8_con": 65000, "12_sin": 75000, "12_con": 85000 },
             "Catupiri": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 85000 },
             "Panceta y Cheddar": { "8_sin": 65000, "8_con": 70000, "12_sin": 80000, "12_con": 90000 },
-            "Palmitos": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 75000 },
-            "Katucarne": { "8_sin": 65000, "8_con": 70000, "12_sin": 75000, "12_con": 75000 },
-            "Carnívora": { "8_sin": 65000, "8_con": 70000, "12_sin": 80000, "12_con": 80000 },
-            "Vegetariana": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 75000 },
-            "Champignones a la Crema": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 75000 },
-            "Cuatro Quesos": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 75000 }
+            "Palmitos": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 85000 },
+            "Katucarne": { "8_sin": 65000, "8_con": 70000, "12_sin": 75000, "12_con": 90000 },
+            "Carnívora": { "8_sin": 65000, "8_con": 70000, "12_sin": 80000, "12_con": 90000 },
+            "Vegetariana": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 85000 },
+            "Champignones a la Crema": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 85000 },
+            "Cuatro Quesos": { "8_sin": 60000, "8_con": 65000, "12_sin": 75000, "12_con": 85000 }
         };
 
         function initPizzaFlavorSelectors() {
