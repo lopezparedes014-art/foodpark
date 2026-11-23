@@ -168,13 +168,13 @@
                     <p class="text-xs text-gray-400 mt-1">Elige tamaño (8 o 12 porciones), borde tradicional o relleno, o arma tu pizza de 2 sabores</p>
                 </div>
 
-                <!-- APARTADO 2 SABORES (MITAD Y MITAD) -->
+                <!-- APARTADO 2 SABORES -->
                 <div class="food-item bg-gradient-to-br from-emerald-950/50 to-[#0B0D0C] border border-emerald-500/40 rounded-xl p-4 mb-5 shadow-lg">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                         <div>
                             <span class="inline-block bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md mb-1">2 Sabores</span>
-                            <h4 class="font-bold text-white text-sm">Pizza Mitad y Mitad (2 Sabores)</h4>
-                            <p class="text-xs text-gray-400 mt-0.5">Selecciona 2 sabores, tamaño y borde. Si tienen distinto precio, se toma el mayor valor correspondiente.</p>
+                            <h4 class="font-bold text-white text-sm">Pizza de 2 Sabores (Mitad y Mitad)</h4>
+                            <p class="text-xs text-gray-400 mt-0.5">Elige 2 sabores, porciones y borde. Si tienen distinto precio, se aplica el de mayor valor.</p>
                         </div>
                         <div class="text-left sm:text-right">
                             <span class="block text-[10px] text-gray-400">Precio:</span>
@@ -186,14 +186,14 @@
                         <div>
                             <label for="flavor-1" class="block text-[11px] text-emerald-300/90 font-semibold mb-1">Sabor 1</label>
                             <select id="flavor-1" onchange="updateHalfPizzaPrice()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
-                                <option value="">-- Elegir sabor 1 --</option>
+                                <option value="">-- Sabor 1 --</option>
                             </select>
                         </div>
 
                         <div>
                             <label for="flavor-2" class="block text-[11px] text-emerald-300/90 font-semibold mb-1">Sabor 2</label>
                             <select id="flavor-2" onchange="updateHalfPizzaPrice()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
-                                <option value="">-- Elegir sabor 2 --</option>
+                                <option value="">-- Sabor 2 --</option>
                             </select>
                         </div>
 
@@ -215,7 +215,7 @@
                     </div>
 
                     <div class="mt-3 pt-3 border-t border-emerald-900/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                        <p id="half-pizza-summary" class="text-xs text-gray-400">Elige 2 sabores para armar la pizza.</p>
+                        <p id="half-pizza-summary" class="text-xs text-gray-400">Elige los 2 sabores.</p>
                         <button onclick="addHalfPizzaToCart()" class="bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs px-4 py-2 rounded-lg transition-all shadow cursor-pointer shrink-0">
                             + Agregar 2 Sabores
                         </button>
@@ -621,9 +621,9 @@
             if (!f1 && !f2) {
                 summaryEl.textContent = `Base: ${size} Porciones · ${crustLabel}. Elige 2 sabores.`;
             } else if (f1 && !f2) {
-                summaryEl.textContent = `Sabor 1: ${f1} · Falta elegir Sabor 2 (${size} P. ${crustLabel}).`;
+                summaryEl.textContent = `Sabor 1: ${f1} · Falta Sabor 2 (${size} P. ${crustLabel}).`;
             } else if (!f1 && f2) {
-                summaryEl.textContent = `Falta elegir Sabor 1 · Sabor 2: ${f2} (${size} P. ${crustLabel}).`;
+                summaryEl.textContent = `Falta Sabor 1 · Sabor 2: ${f2} (${size} P. ${crustLabel}).`;
             } else {
                 summaryEl.textContent = `½ ${f1} + ½ ${f2} (${size} P. ${crustLabel})`;
             }
@@ -636,12 +636,12 @@
             const crustLabel = document.getElementById('half-crust').value === 'con' ? 'Con Borde' : 'Sin Borde';
 
             if (!f1 || !f2) {
-                alert("Por favor selecciona los 2 sabores para tu pizza mitad y mitad.");
+                alert("Por favor selecciona los 2 sabores para tu pizza de 2 sabores.");
                 return;
             }
 
             const price = calculateHalfPizzaPrice();
-            const itemName = `Pizza Mitad y Mitad: ½ ${f1} + ½ ${f2} (${size} P. ${crustLabel})`;
+            const itemName = `Pizza 2 Sabores: ½ ${f1} + ½ ${f2} (${size} P. ${crustLabel})`;
             addToCart(itemName, price);
         }
 
