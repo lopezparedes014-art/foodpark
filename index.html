@@ -168,37 +168,38 @@
                     <p class="text-xs text-gray-400 mt-1">Elige tamaño (8 o 12 porciones), borde tradicional o relleno, o arma tu pizza de 2 sabores</p>
                 </div>
 
-                <!-- APARTADO 2 SABORES (PRECIO A CONSULTAR) -->
+                <!-- APARTADO 2 SABORES (MITAD Y MITAD) -->
                 <div class="food-item bg-gradient-to-br from-emerald-950/50 to-[#0B0D0C] border border-emerald-500/40 rounded-xl p-4 mb-5 shadow-lg">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                         <div>
                             <span class="inline-block bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md mb-1">2 Sabores</span>
                             <h4 class="font-bold text-white text-sm">Pizza de 2 Sabores (Mitad y Mitad)</h4>
-                            <p class="text-xs text-gray-400 mt-0.5">Elige 2 sabores, porciones y borde para incluir en tu pedido.</p>
+                            <p class="text-xs text-gray-400 mt-0.5">El precio sin borde se calcula sumando la mitad del valor de cada sabor elegido.</p>
                         </div>
                         <div class="text-left sm:text-right">
-                            <span class="font-medium text-gray-400 text-xs italic">Precio a consultar</span>
+                            <span id="half-pizza-price-label" class="block text-[10px] text-gray-400">Precio:</span>
+                            <span id="half-pizza-price" class="font-extrabold text-emerald-400 text-base">Elige 2 sabores</span>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 pt-3 border-t border-emerald-900/30 text-xs">
                         <div>
                             <label for="flavor-1" class="block text-[11px] text-emerald-300/90 font-semibold mb-1">Sabor 1</label>
-                            <select id="flavor-1" onchange="updateHalfPizzaSummary()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
+                            <select id="flavor-1" onchange="updateHalfPizzaUI()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
                                 <option value="">-- Sabor 1 --</option>
                             </select>
                         </div>
 
                         <div>
                             <label for="flavor-2" class="block text-[11px] text-emerald-300/90 font-semibold mb-1">Sabor 2</label>
-                            <select id="flavor-2" onchange="updateHalfPizzaSummary()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
+                            <select id="flavor-2" onchange="updateHalfPizzaUI()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
                                 <option value="">-- Sabor 2 --</option>
                             </select>
                         </div>
 
                         <div>
                             <label for="half-size" class="block text-[11px] text-gray-300 font-semibold mb-1">Porciones</label>
-                            <select id="half-size" onchange="updateHalfPizzaSummary()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
+                            <select id="half-size" onchange="updateHalfPizzaUI()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
                                 <option value="8" selected>8 Porciones</option>
                                 <option value="12">12 Porciones</option>
                             </select>
@@ -206,7 +207,7 @@
 
                         <div>
                             <label for="half-crust" class="block text-[11px] text-gray-300 font-semibold mb-1">Borde</label>
-                            <select id="half-crust" onchange="updateHalfPizzaSummary()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
+                            <select id="half-crust" onchange="updateHalfPizzaUI()" class="w-full bg-[#141816] text-gray-200 px-2.5 py-2 rounded-lg border border-emerald-900/60 focus:outline-none focus:border-emerald-500 cursor-pointer">
                                 <option value="sin" selected>Sin Borde</option>
                                 <option value="con">Con Borde</option>
                             </select>
@@ -549,29 +550,29 @@
     <script>
         let cart = [];
 
-        const pizzaFlavorList = [
-            "Muzzarella",
-            "Pepperoni",
-            "Choclo",
-            "Mexicana",
-            "Jamón y Queso",
-            "Catupollo",
-            "Napolitana",
-            "Catupiri",
-            "Panceta y Cheddar",
-            "Palmitos",
-            "Katucarne",
-            "Carnívora",
-            "Vegetariana",
-            "Champignones a la Crema",
-            "Cuatro Quesos"
-        ];
+        const pizzaBasePrices = {
+            "Muzzarella": { "8": 45000, "12": 65000 },
+            "Pepperoni": { "8": 55000, "12": 75000 },
+            "Choclo": { "8": 50000, "12": 70000 },
+            "Mexicana": { "8": 65000, "12": 80000 },
+            "Jamón y Queso": { "8": 50000, "12": 70000 },
+            "Catupollo": { "8": 65000, "12": 75000 },
+            "Napolitana": { "8": 55000, "12": 75000 },
+            "Catupiri": { "8": 60000, "12": 75000 },
+            "Panceta y Cheddar": { "8": 65000, "12": 80000 },
+            "Palmitos": { "8": 60000, "12": 75000 },
+            "Katucarne": { "8": 65000, "12": 75000 },
+            "Carnívora": { "8": 65000, "12": 80000 },
+            "Vegetariana": { "8": 60000, "12": 75000 },
+            "Champignones a la Crema": { "8": 60000, "12": 75000 },
+            "Cuatro Quesos": { "8": 60000, "12": 75000 }
+        };
 
         function initPizzaFlavorSelectors() {
             const f1 = document.getElementById('flavor-1');
             const f2 = document.getElementById('flavor-2');
 
-            pizzaFlavorList.forEach(name => {
+            Object.keys(pizzaBasePrices).forEach(name => {
                 const opt1 = document.createElement('option');
                 opt1.value = name;
                 opt1.textContent = name;
@@ -583,16 +584,48 @@
                 f2.appendChild(opt2);
             });
 
-            updateHalfPizzaSummary();
+            updateHalfPizzaUI();
         }
 
-        function updateHalfPizzaSummary() {
+        function calculateHalfPizzaPrice() {
             const f1 = document.getElementById('flavor-1').value;
             const f2 = document.getElementById('flavor-2').value;
             const size = document.getElementById('half-size').value;
-            const crustLabel = document.getElementById('half-crust').value === 'con' ? 'Con Borde' : 'Sin Borde';
+            const crust = document.getElementById('half-crust').value;
 
+            if (crust === 'con') return null;
+            if (!f1 || !f2) return undefined;
+
+            return (pizzaBasePrices[f1][size] / 2) + (pizzaBasePrices[f2][size] / 2);
+        }
+
+        function updateHalfPizzaUI() {
+            const f1 = document.getElementById('flavor-1').value;
+            const f2 = document.getElementById('flavor-2').value;
+            const size = document.getElementById('half-size').value;
+            const crust = document.getElementById('half-crust').value;
+            const crustLabel = crust === 'con' ? 'Con Borde' : 'Sin Borde';
+
+            const priceLabelEl = document.getElementById('half-pizza-price-label');
+            const priceEl = document.getElementById('half-pizza-price');
             const summaryEl = document.getElementById('half-pizza-summary');
+
+            const calculatedPrice = calculateHalfPizzaPrice();
+
+            if (crust === 'con') {
+                priceLabelEl.textContent = 'Borde relleno:';
+                priceEl.textContent = 'Consultar precio con borde';
+                priceEl.className = 'font-medium text-gray-300 text-xs italic';
+            } else if (calculatedPrice === undefined) {
+                priceLabelEl.textContent = 'Precio Sin Borde:';
+                priceEl.textContent = 'Elige 2 sabores';
+                priceEl.className = 'font-bold text-emerald-400 text-sm';
+            } else {
+                priceLabelEl.textContent = 'Precio Final:';
+                priceEl.textContent = `${calculatedPrice.toLocaleString()} GS.`;
+                priceEl.className = 'font-extrabold text-emerald-400 text-base';
+            }
+
             if (!f1 && !f2) {
                 summaryEl.textContent = `Base: ${size} Porciones · ${crustLabel}. Elige 2 sabores.`;
             } else if (f1 && !f2) {
@@ -608,23 +641,25 @@
             const f1 = document.getElementById('flavor-1').value;
             const f2 = document.getElementById('flavor-2').value;
             const size = document.getElementById('half-size').value;
-            const crustLabel = document.getElementById('half-crust').value === 'con' ? 'Con Borde' : 'Sin Borde';
+            const crust = document.getElementById('half-crust').value;
+            const crustLabel = crust === 'con' ? 'Con Borde' : 'Sin Borde';
 
             if (!f1 || !f2) {
                 alert("Por favor selecciona los 2 sabores para tu pizza de 2 sabores.");
                 return;
             }
 
+            const price = calculateHalfPizzaPrice();
             const itemName = `Pizza 2 Sabores: ½ ${f1} + ½ ${f2} (${size} P. ${crustLabel})`;
-            addToCart(itemName, null);
+            addToCart(itemName, price, crust === 'con' ? 'Consultar precio con borde' : null);
         }
 
-        function addToCart(name, price) {
+        function addToCart(name, price, customLabel = null) {
             const existing = cart.find(item => item.name === name);
             if (existing) {
                 existing.qty += 1;
             } else {
-                cart.push({ name, price, qty: 1 });
+                cart.push({ name, price, qty: 1, customLabel });
             }
             updateCartUI();
         }
@@ -661,7 +696,7 @@
                 const el = document.createElement('div');
                 el.className = "py-2.5 flex justify-between items-center text-xs";
                 const priceLabel = item.price === null
-                    ? `<p class="text-gray-400 italic">Precio a consultar</p>`
+                    ? `<p class="text-gray-400 italic">${item.customLabel || 'Precio a consultar'}</p>`
                     : `<p class="text-emerald-400 font-medium">${(item.price * item.qty).toLocaleString()} GS.</p>`;
 
                 el.innerHTML = `
@@ -723,7 +758,7 @@
             
             cart.forEach(item => {
                 const itemTotal = item.price === null
-                    ? `*Precio a consultar*`
+                    ? `*${item.customLabel || 'Precio a consultar'}*`
                     : `*${(item.price * item.qty).toLocaleString()} GS.*`;
                 message += `• ${item.qty}x ${item.name} - ${itemTotal}\n`;
             });
